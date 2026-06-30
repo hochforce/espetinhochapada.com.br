@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espetinhos Gourmet - Jantinha Caseira com Sabor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #b71c1c;
+            --accent-color: #ff5722;
+            --light-color: #ffebee;
+            --dark-color: #212121;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1') no-repeat center center/cover;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--light-color);
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(211, 47, 47, 0.9);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo-small {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--light-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--light-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 87, 34, 0.6);
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 20px;
+            background-color: var(--light-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .item-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .item-description {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background-color: var(--light-color);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 50px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-method {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-method i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #e64a19;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* Estilo de formulário de pedido */
+
+
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .slogan {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 30px;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-small">Espetinho Bom de Garfo</a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#video">Nosso Preparo</a></li>
+                <li><a href="#menu">Cardápio</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <div class="logo">Espetinho Bom de Garfo</div>
+        <p class="slogan">Espetinhos de respeito, jantinha de qualidade!</p>
+        <div class="hero-content">
+            <h1>Jantinha Caseira & Espetinhos Artesanais</h1>
+            <p>Deliciosos espetinhos feitos na hora e pratos caseiros que lembram o sabor de casa</p>
+            <a href="#menu" class="btn">Ver Cardápio</a>
+        </div>
+    </header>
+    <!-- Adicione esta seção após o hero header -->
+    <section class="highlights">
+        <div class="highlight-carousel">
+            <div class="highlight-item active">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1" alt="Destaque 1">
+                <div class="highlight-text">
+                    <h3>Espetinho da Casa</h3>
+                    <p>Nosso carro-chefe com tempero secreto</p>
+                </div>
+            </div>
+            <div class="highlight-item">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Destaque 2">
+                <div class="highlight-text">
+                    <h3>Jantinha Completa</h3>
+                    <p>Comida caseira como você merece</p>
+                </div>
+            </div>
+            <!-- Adicione mais itens conforme necessário -->
+        </div>
+    </section>
+
+    <style>
+        .highlights {
+            background-color: #fff;
+            padding: 40px 0;
+        }
+
+        .highlight-carousel {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .highlight-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .highlight-item.active {
+            opacity: 1;
+        }
+
+        .highlight-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .highlight-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(211, 47, 47, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        // Rotação automática dos destaques
+        let currentHighlight = 0;
+        const highlights = document.querySelectorAll('.highlight-item');
+
+        function rotateHighlights() {
+            highlights[currentHighlight].classList.remove('active');
+            currentHighlight = (currentHighlight + 1) % highlights.length;
+            highlights[currentHighlight].classList.add('active');
+        }
+
+        setInterval(rotateHighlights, 5000);
+    </script>
+
+    <!-- Video Section -->
+    <section class="video-section" id="video">
+        <h2 class="section-title">Nosso Preparo Artesanal</h2>
+        <p>Assista como preparamos nossos espetinhos com carinho e tradição</p>
+
+        <div class="video-container">
+            <!-- Vídeo de carne sendo assada - substitua pelo seu próprio vídeo -->
+            <video controls poster="https://images.unsplash.com/photo-1544025162-d76694265947">
+                <source
+                    src="https://assets.mixkit.co/videos/preview/mixkit-grilling-meat-on-a-barbecue-close-up-39839-large.mp4"
+                    type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+    </section>
+
+    <!-- Adicione antes da seção de cardápio -->
+    <section class="promo-banner">
+        <div class="promo-content">
+            <h3>Promoção Especial!</h3>
+            <p>Combo Família: 5 espetinhos + 2 jantinhas completas</p>
+            <p class="promo-price">De R$ 85,00 por <span>R$ 69,90</span></p>
+            <a href="#contact" class="btn">Pedir Agora</a>
+        </div>
+    </section>
+
+    <style>
+        .promo-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1544025162-d76694265947') center/cover;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .promo-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(211, 47, 47, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .promo-price {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .promo-price span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+    </style>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <h2 class="section-title">Nosso Cardápio</h2>
+        <p>Sabores que vão te fazer voltar sempre</p>
+
+        <div class="menu-grid">
+            <!-- Espetinho de Carne -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae" alt="Espetinho de Carne">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-name">Espetinho de Carne</h3>
+                    <p class="item-description">Carne bovina premium, temperada com especiarias especiais e grelhada no
+                        ponto perfeito.</p>
+                    <p class="item-price">R$ 8,00</p>
+                </div>
+            </div>
+
+            <!-- Espetinho de Frango -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143" alt="Espetinho de Frango">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-name">Espetinho de Frango</h3>
+                    <p class="item-description">Filé de frango marinado em ervas finas e grelhado na churrasqueira a
+                        carvão.</p>
+                    <p class="item-price">R$ 7,50</p>
+                </div>
+            </div>
+
+            <!-- Espetinho de Linguiça -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Espetinho de Linguiça">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-name">Espetinho de Linguiça</h3>
+                    <p class="item-description">Linguiça toscana artesanal, defumada e grelhada até ficar crocante.</p>
+                    <p class="item-price">R$ 7,50</p>
+                </div>
+            </div>
+
+            <!-- Espetinho de Queijo -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Espetinho de Queijo">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-name">Espetinho de Queijo</h3>
+                    <p class="item-description">Queijo coalho derretido e grelhado, perfeito acompanhamento para os
+                        espetinhos.</p>
+                    <p class="item-price">R$ 6,50</p>
+                </div>
+            </div>
+
+            <!-- PF Completo -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="PF Completo">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-name">PF Completo</h3>
+                    <p class="item-description">Arroz, feijão, batata frita, salada, farofa e sua escolha de carne ou
+                        frango.</p>
+                    <p class="item-price">R$ 20,00</p>
+                </div>
+            </div>
+
+            <!-- PF Executivo -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0" alt="PF Executivo">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-name">PF Executivo</h3>
+                    <p class="item-description">Tudo do PF completo mais dois tipos de carne e uma sobremesa especial.
+                    </p>
+                    <p class="item-price">R$ 25,00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adicione esta seção após o menu -->
+    <section class="testimonials">
+        <h2 class="section-title">O Que Dizem Nossos Clientes</h2>
+
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>"Melhor espetinho da região! Todo final de semana peço para a família."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente 1">
+                    <h4>Maria Silva</h4>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>"A jantinha caseira me lembra a comida da minha avó. Perfeito!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente 2">
+                    <h4>João Santos</h4>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .testimonials {
+            background-color: var(--light-color);
+            padding: 80px 20px;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-content p::before,
+        .testimonial-content p::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-top: 5px;
+        }
+    </style>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">Nossos Espetinhos</h2>
+        <p>Conheça nossa variedade de sabores</p>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1" alt="Espetinhos Variados">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143" alt="Espetinho de Frango">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559847844-5315695dadae" alt="Espetinho de Carne">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Espetinho de Linguiça">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947" alt="Espetinhos na Churrasqueira">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" alt="Espetinho de Camarão">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd" alt="Acompanhamentos">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Jantar Completo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Faça seu Pedido</h2>
+        <p>Entre em contato para reservas ou pedidos</p>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informações de Contato</h3>
+
+                <!-- <div class="contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Endereço</h4>
+                        <p>Rua dos Sabores, 123<br>Bairro Delícia - Sua Cidade/SP</p>
+                    </div>
+                </div> -->
+                <!-- Substitua a seção de endereço no formulário por: -->
+                <div class="contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Endereço</h4>
+                        <p>Rua dos Sabores, 123<br>Bairro Delícia - Sua Cidade/SP</p>
+                        <div class="map-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0754267452926!2d-46.6534265844076!3d-23.565734367638192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1623868123962!5m2!1spt-BR!2sbr"
+                                width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .map-container {
+                        margin-top: 15px;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+                    }
+                </style>
+
+                <div class="contact-method">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Telefone</h4>
+                        <p>(11) 98765-4321</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p>(11) 98765-4321</p>
+                        <a href="https://wa.me/5511987654321" class="btn"
+                            style="padding: 8px 15px; font-size: 0.9rem; margin-top: 10px;">
+                            <i class="fab fa-whatsapp"></i> Enviar Mensagem
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Horário de Funcionamento</h4>
+                        <p>Terça a Sexta: 18h - 23h<br>
+                            Sábado: 12h - 00h<br>
+                            Domingo: 12h - 18h</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- FORMULÁRIO DE PEDIDOS WHATSAPP -->
+            <div class="contact-form">
+                <h3>Faça Seu Pedido Agora</h3>
+                <form id="whatsappOrderForm">
+                    <!-- Dados do Cliente -->
+                    <div class="form-group">
+                        <label for="customerName">Seu Nome*</label>
+                        <input type="text" id="customerName" name="customerName" required
+                            placeholder="Como gostaria de ser chamado">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerPhone">WhatsApp*</label>
+                        <input type="tel" id="customerPhone" name="customerPhone" required
+                            placeholder="(38) 99999-9999">
+                    </div>
+
+                    <!-- Tipo de Pedido -->
+                    <div class="form-group">
+                        <label for="orderType">Como vai ser?*</label>
+                        <select id="orderType" name="orderType" required onchange="toggleAddressField()">
+                            <option value="">Selecione...</option>
+                            <option value="🛵 Delivery (Entrega)">🛵 Delivery (Entrega)</option>
+                            <option value="🏃 Retirada no Local">🏃 Retirada no Local</option>
+                        </select>
+                    </div>
+
+                    <!-- Endereço (aparece apenas se for delivery) -->
+                    <div class="form-group" id="addressField" style="display:none;">
+                        <label for="deliveryAddress">Endereço Completo*</label>
+                        <input type="text" id="deliveryAddress" name="deliveryAddress"
+                            placeholder="Rua, Nº, Bairro, Ponto de Referência">
+                    </div>
+
+                    <!-- Itens do Cardápio -->
+                    <div class="form-group">
+                        <label>Selecione Seus Itens*</label>
+
+                        <div class="menu-checkbox">
+                            <input type="checkbox" id="item1" name="orderItems" value="🍢 Espetinho de Carne - R$ 8,00">
+                            <label for="item1">🍢 Espetinho de Carne - R$ 8,00</label>
+                        </div>
+
+                        <div class="menu-checkbox">
+                            <input type="checkbox" id="item2" name="orderItems"
+                                value="🍗 Espetinho de Frango - R$ 7,50">
+                            <label for="item2">🍗 Espetinho de Frango - R$ 7,50</label>
+                        </div>
+
+                        <div class="menu-checkbox">
+                            <input type="checkbox" id="item3" name="orderItems"
+                                value="🌭 Espetinho de Linguiça - R$ 7,50">
+                            <label for="item3">🌭 Espetinho de Linguiça - R$ 7,50</label>
+                        </div>
+
+                        <div class="menu-checkbox">
+                            <input type="checkbox" id="item4" name="orderItems"
+                                value="🧀 Espetinho de Queijo - R$ 6,50">
+                            <label for="item4">🧀 Espetinho de Queijo - R$ 6,50</label>
+                        </div>
+
+                        <div class="menu-checkbox">
+                            <input type="checkbox" id="item5" name="orderItems" value="🍱 PF Completo - R$ 20,00">
+                            <label for="item5">🍱 PF Completo - R$ 20,00</label>
+                        </div>
+
+                        <div class="menu-checkbox">
+                            <input type="checkbox" id="item6" name="orderItems" value="🎩 PF Executivo - R$ 25,00">
+                            <label for="item6">🎩 PF Executivo - R$ 25,00</label>
+                        </div>
+                    </div>
+
+                    <!-- Outros Itens -->
+                    <div class="form-group">
+                        <label for="additionalItems">Algo mais? (opcional)</label>
+                        <textarea id="additionalItems" name="additionalItems"
+                            placeholder="Ex: 1 Coca-Cola, 2 porções de batata..."></textarea>
+                    </div>
+
+                    <!-- Pagamento -->
+                    <div class="form-group">
+                        <label for="paymentMethod">Forma de Pagamento*</label>
+                        <select id="paymentMethod" name="paymentMethod" required>
+                            <option value="">Selecione...</option>
+                            <option value="💵 Dinheiro">💵 Dinheiro</option>
+                            <option value="📱 PIX">📱 PIX</option>
+                            <option value="💳 Cartão (crédito/débito)">💳 Cartão (crédito/débito)</option>
+                        </select>
+                    </div>
+
+                    <!-- Observações -->
+                    <div class="form-group">
+                        <label for="orderNotes">Observações (opcional)</label>
+                        <textarea id="orderNotes" name="orderNotes"
+                            placeholder="Ex: sem cebola, ponto da carne, etc."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> ENVIAR PEDIDO VIA WHATSAPP
+                    </button>
+                </form>
+            </div>
+
+            <style>
+                /* Estilos para o formulário de pedidos */
+                .menu-checkbox {
+                    margin: 8px 0;
+                    padding: 10px;
+                    background: #fff;
+                    border-radius: 5px;
+                    border: 1px solid #eee;
+                }
+
+                .menu-checkbox:hover {
+                    background: #ffebee;
+                }
+
+                .menu-checkbox input[type="checkbox"] {
+                    margin-right: 10px;
+                }
+
+                .whatsapp-btn {
+                    background-color: #25D366 !important;
+                    width: 100%;
+                    padding: 15px;
+                    font-size: 1.1rem;
+                }
+
+                .whatsapp-btn:hover {
+                    background-color: #128C7E !important;
+                }
+            </style>
+
+            <script>
+                // Mostrar/ocultar campo de endereço conforme seleção
+                function toggleAddressField() {
+                    const orderType = document.getElementById('orderType').value;
+                    const addressField = document.getElementById('addressField');
+
+                    if (orderType.includes('Delivery')) {
+                        addressField.style.display = 'block';
+                        document.getElementById('deliveryAddress').required = true;
+                    } else {
+                        addressField.style.display = 'none';
+                        document.getElementById('deliveryAddress').required = false;
+                    }
+                }
+
+                // Enviar pedido via WhatsApp
+                document.getElementById('whatsappOrderForm').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Coletar dados do formulário
+                    const formData = new FormData(this);
+                    const name = formData.get('customerName');
+                    const phone = formData.get('customerPhone');
+                    const orderType = formData.get('orderType');
+                    const deliveryAddress = formData.get('deliveryAddress') || 'Não informado';
+                    const paymentMethod = formData.get('paymentMethod');
+                    const additionalItems = formData.get('additionalItems') || 'Nada mais';
+                    const orderNotes = formData.get('orderNotes') || 'Sem observações';
+
+                    // Itens selecionados
+                    const orderItems = [];
+                    document.querySelectorAll('input[name="orderItems"]:checked').forEach(item => {
+                        orderItems.push(item.value);
+                    });
+
+                    // Validar se selecionou pelo menos 1 item
+                    if (orderItems.length === 0) {
+                        alert('Por favor, selecione pelo menos 1 item do cardápio!');
+                        return;
+                    }
+
+                    // Formatar mensagem para WhatsApp
+                    let message = `*PEDIDO - ESPETINHO BOM DE GARFO* \n\n`;
+                    message += `*Cliente:* ${name}\n`;
+                    message += `*Contato:* ${phone}\n`;
+                    message += `*Tipo:* ${orderType}\n`;
+
+                    if (orderType.includes('Delivery')) {
+                        message += `*Endereço:* ${deliveryAddress}\n`;
+                    }
+
+                    message += `\n*ITENS DO PEDIDO:*\n${orderItems.join('\n')}\n`;
+
+                    if (additionalItems !== 'Nada mais') {
+                        message += `\n*ADICIONAIS:*\n${additionalItems}\n`;
+                    }
+
+                    message += `\n*Pagamento:* ${paymentMethod}\n`;
+                    message += `*Observações:* ${orderNotes}\n`;
+                    message += `\n*Pedido feito em:* ${new Date().toLocaleString('pt-BR')}\n`;
+                    message += `\n*Por favor confirme meu pedido acima!*`;
+
+                    // Formatar número de telefone (remover tudo que não for número)
+                    const formattedPhone = '5538999820825'; // Seu número fixo
+
+                    // Redirecionar para WhatsApp
+                    window.location.href = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(message)}`;
+
+                    // Opcional: Limpar formulário após envio
+                    // this.reset();
+                });
+            </script>
+        </div>
+    </section>
+
+    <!-- Adicione esta seção antes do rodapé -->
+    <section class="stats">
+        <div class="stat-item">
+            <i class="fas fa-utensils"></i>
+            <span class="counter" data-target="1250">0</span>
+            <p>Espetinhos Vendidos</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-heart"></i>
+            <span class="counter" data-target="850">0</span>
+            <p>Clientes Satisfeitos</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span class="counter" data-target="365">0</span>
+            <p>Dias de Tradição</p>
+        </div>
+    </section>
+
+    <style>
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <script>
+        // Animação do contador
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Dispara a animação quando a seção estiver visível
+        window.addEventListener('scroll', function () {
+            const statsSection = document.querySelector('.stats');
+            const position = statsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+
+            if (position < screenPosition) {
+                animateCounters();
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Espetinhos Gourmet</h3>
+                <p>O verdadeiro sabor da churrasqueira na sua mesa desde 2015.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#menu">Cardápio</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Horário</h3>
+                <ul class="footer-links">
+                    <li>Terça a Sexta: 18h - 23h</li>
+                    <li>Sábado: 12h - 00h</li>
+                    <li>Domingo: 12h - 18h</li>
+                    <li>Segunda: Fechado</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Espetinhos Gourmet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.menu-item, .gallery-item, .contact-info, .contact-form');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.menu-item, .gallery-item, .contact-info, .contact-form').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+    <!-- Adicione no final do body, antes do fechamento </body> -->
+    <a href="https://wa.me/5538999820825" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</body>
+
+</html>
