@@ -162,10 +162,35 @@ button { font: inherit; }
 .footer a { color: var(--gold-light); font-weight: 800; }
 
 .floating-whatsapp {
-  position: fixed; right: 17px; bottom: 17px; z-index: 30;
-  display: grid; place-items: center; width: 58px; height: 58px;
-  border-radius: 50%; background: #1ebe5d; color: white;
-  font-size: 31px; box-shadow: 0 8px 25px rgba(0,0,0,.45);
+    position: fixed;
+    right: 17px;
+    bottom: 17px;
+    z-index: 30;
+
+    display: grid;
+    place-items: center;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+    background: #25D366;
+    color: white;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+
+    transition: transform 0.2s, background 0.2s;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.08);
+    background: #1ebe5d;
+}
+
+.floating-whatsapp svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
 }
 
 @media (min-width: 620px) {
